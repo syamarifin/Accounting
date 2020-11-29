@@ -1,0 +1,183 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<title>Coa Mapping</title>
+<meta name="GENERATOR" content="WinCHM">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+html,body { 
+	/* Default Font */
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+}
+</style>
+
+
+
+
+<link href="template2/winchm_template_style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+function d_onresize(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+document.getElementById('winchm_template_content').style.pixelWidth = document.body.offsetWidth - 3;
+document.getElementById('winchm_template_content').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
+}
+document.getElementById('winchm_template_content').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
+}
+
+function d_onbeforeprint(){
+document.getElementById('winchm_template_content').style.width = 'auto';
+document.getElementById('winchm_template_content').style.height = 'auto';
+}
+
+function d_onafterprint(){
+d_onresize();
+}
+
+window.onload = d_onresize;
+window.onresize = d_onresize;
+window.onbeforeprint = d_onbeforeprint;
+window.onafterprint = d_onafterprint;
+</script>
+</head>
+
+<body><script language="JavaScript" type="text/JavaScript">
+function syn(){
+if(parent.nav.tree){
+ if(parent.nav.tree.loaded){
+  parent.nav.tree.selectNode(6);
+ }else{
+  setTimeout("syn()",500);
+}
+  }else{
+  setTimeout("syn()",500);
+  }}
+if(parent!=self){
+  setTimeout("syn()",100);
+}else{
+  parent.location.href = "../index.htm#page=Coa_Mapping.htm";
+}
+originalOnload = window.onload;
+if(originalOnload==null){
+window.onload = function(){parent.contentLoaded = true;};
+}else{
+window.onload = function(){originalOnload();parent.contentLoaded = true;};
+}
+</script> 
+
+
+<div id="winchm_template_top">
+<table width="100%" height="50" bgcolor="#c4d0f4" style="WIDTH: 100%" cellSpacing=0 cellPadding=3 border=0>
+<tr>
+<td>
+<div id="winchm_template_navigation">
+<em>Alcor Accounting &gt; Sales &gt; <A href="$$unsavedpage1.htm">Sales Configuration</A> &gt; </em> </div>
+<div id="winchm_template_title">
+Coa Mapping</div>
+</td>
+<td align="right" style="WIDTH: 90px">
+<A href="Sales_Budget.htm" title="Previous"><img id="winchm_template_prev" alt="Previous" src="template2/btn_prev_n.gif" border="0"></a><A href="$$unsavedpage2.htm" title="Next"><img id="winchm_template_next" alt="Next" src="template2/btn_next_n.gif" border="0"></a>
+</td>
+</tr>
+</table>
+</div>
+<div id="winchm_template_content">
+<p>
+<P><FONT size=4><STRONG>COA MAPPING</STRONG></FONT></P>
+<P>COA (chart of account)&nbsp;mapping digunakan untuk 
+memasukkan kode-kode nomer perkiraan akutansi yang diperlukan untuk proses 
+pembentukkan Sales Jurnal secara otomatis.</P>
+<P> Pilih menu Sales &gt; Sales 
+Configuration &gt; kemudian pilih "Coa Mapping", maka anda akan 
+mendapatkan tampilan sebagai berikut :</P>
+<P><IMG style="HEIGHT: 369px; WIDTH: 805px" border=2 alt="" src="SL 11 COAmap.jpg" width=1306 height=623></P>
+<P>Ada dua kelompok "Coa Mapping" yang harus dilakukan, 
+yaitu :</P>
+<OL>
+  <LI>
+<DIV>Revenue<BR></DIV>
+  <LI>
+<DIV>Settlement</DIV></LI></OL>
+<P>&nbsp;</P>
+<P><FONT size=4><STRONG>COA MAPPING 
+REVENUE</STRONG></FONT></P>
+<P>Klik tab/kelompok Revenue, maka anda akan mendapatkan 
+tampilan seperti di atas, ada 3 kolom kode nomer perkiraan yang harus dimasukkan 
+Revenue, Tax dan Service.</P>
+<P>(Kode-kode nomer perkiraan ini harus dilakukan "setup" di modul &nbsp;General 
+ledger &gt; GL Configuration &gt;Chart of Account).</P>
+<P>Pada umumnya kode nomer perkiraan untuk Tax dan Service 
+adalah sama, untuk itu anda bisa melakukan "setup" secara cepat 
+dengan cara klik tombol "Setting All Coa"</P>
+<P><IMG style="HEIGHT: 448px; WIDTH: 823px" border=2 alt="" src="SL 12 coamap tax.jpg" width=1323 height=619>         
+          
+      </P>
+<P>         
+          
+Setelah anda mendapatkan tampilan seperti diatas :</P>
+<OL>
+  <LI>
+<DIV>         
+          
+   Klik Setting All Coa</DIV></LI>
+  <LI>
+<DIV>         
+  Klik/ beri tanda centang pada Tax dan Service, 
+dan ketikkan kode nomer perkiraan yang sesuai.</DIV></LI>
+  <LI>
+<DIV>         
+Klik Apply, maka semua kode department secara otomatis&nbsp;untuk kode perkiraan 
+pada kolom Tax dan Service akan terisi.</DIV></LI></OL>
+<P>      Untuk&nbsp; kode nomer 
+perkiraan pada kolom Revenue, harus dimasukkan satu per satu untuk 
+masing-masing kode pendapatan dan klik Tombol "Save"</P>
+<P><IMG style="HEIGHT: 53px; WIDTH: 77px" alt="" src="01 bulb.png.jpg" width=124 height=139>PERHATIKAN khusus 
+untuk&nbsp;kode-kode department&nbsp;SYDP Deposit, SYPO Paid Out , SYRF Refund , SYPY Settlement , 
+kode nomer perkiraan&nbsp;pada kolom Revenue diisi dengan akun Guest&nbsp;Ledger, sedangkan 
+untuk kolom tax , service akan diabaikan.</P>
+<P>         
+          
+      &nbsp;</P>
+<P><IMG style="HEIGHT: 227px; WIDTH: 758px" alt="" src="SL 14 coamap sys.jpg" width=1305 height=408>         
+          
+      &nbsp;</P>
+<P>         
+          
+      &nbsp;</P>
+<P><FONT size=4><STRONG>COA MAPPING 
+SETTLEMENT</STRONG></FONT></P>
+<P>       
+    Klik tab/kelompok Settlement, maka anda akan mendapatkan tampilan seperti 
+di bawah ini :</P>
+<P><IMG style="HEIGHT: 375px; WIDTH: 806px" border=2 alt="" src="SL 12 coamap settle.jpg" width=1307 height=631>       
+             
+   </P>
+<P>Ada&nbsp;5 kolom kode nomer perkiraan yang harus 
+dimasukkan yaitu&nbsp;Post to Guest Account/Guest Ledger , Cash , Card, City Ledger dan 
+Web Booking (kode ini ini digunakan jika ada deposit yang dimasukkan dari Alcor 
+ME Booking Engine ).</P>
+<P>Biasanya kode nomer perkiraan 
+untuk kelompok settlement ini semua&nbsp;memiliki kode yang sama, sehingga anda bisa melakukan "setup" 
+secara&nbsp;cepat dengan cara :</P>
+<OL>
+  <LI>
+<DIV>Klik&nbsp;tombol Setting&nbsp;All Coa<BR><IMG style="HEIGHT: 332px; WIDTH: 775px" alt="" src="SL 13 coamap settleAll.jpg" width=1303 height=508><BR>       
+             
+   </DIV></LI>
+  <LI>
+<DIV>       
+    Klik / tanda centang pada kelompok settlement yang akan 
+dimasukkan kode nomer perkiraan-nya.</DIV></LI>
+  <LI>
+<DIV>       
+    Kemudian klik tombol Apply, maka secara otomatis semua kode 
+nomer perkiraan akan tersimpan.</DIV></LI></OL>
+<P>&nbsp;</P></p>
+<hr>
+  <font face="Arial" color="#808080" size="1">Copyright&nbsp;2019 
+by&nbsp;PT. Pyxis Ultimate 
+  Solution</font>      </div>
+
+</body>
+</html>

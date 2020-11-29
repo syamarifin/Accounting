@@ -1,0 +1,762 @@
+﻿<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="iPxMaster_MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link rel="icon" type="image/png" href="../assets/images/icon/icon/logo-A.png">
+    <title>Untitled Page</title>
+    
+    <script src="../assets/js/jquery.js" type="text/javascript"></script>
+    <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+    
+    <script type="text/javascript" src="../assets/js/Chart.min.js"></script>
+    
+    <script src="../assets/BootStrapDateTimePickerExample/DatePicker/bootstrap-datepicker.js" type="text/javascript"></script>
+    <link href="../assets/BootStrapDateTimePickerExample/DatePicker/bootstrap-datepicker.css" rel="stylesheet" />
+    
+    <link href="../assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="../assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="../assets/css/custom.css" rel="stylesheet" />
+    <link href="../assets/css/main.css" rel="stylesheet" />
+    <link href="../assets/css/simple-sidebar.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".datepicker").datepicker({ format: 'dd/mm/yyyy', autoclose: true, todayBtn: 'linked' })
+            $(".datepicker1").datepicker({ format: 'dd MM yyyy', autoclose: true, todayBtn: 'linked' })
+             var path = window.location.pathname;
+             var page = path.split("/").pop();
+             if (page == 'iPxCoyGrp.aspx' || page == 'iPxCustomerGrp.aspx' || page == 'iPxCustomerAR.aspx' || page == 'iPxTransactionTypeAR.aspx' || page == 'iPxPaimentType.aspx') {
+                 $("#titleMaster").html("Configuration AR Customer");
+             }else if (page == 'iPxARSummary.aspx') {
+                 $("#titleMaster").html("AR Summary")
+             }else if (page == 'iPxARAging.aspx') {
+                 $("#titleMaster").html("AR Aging")
+             }else if (page == 'iPxARTransaction.aspx') {
+                 $("#titleMaster").html("AR Transaction")
+             }else if (page == 'iPxARInvoice.aspx') {
+                 $("#titleMaster").html("AR Invoice")
+             } else if (page == 'iPxARReceipt.aspx') {
+                 $("#titleMaster").html("AR Receipt")
+             } else if (page == 'iPxInputCustomerAR.aspx') {
+                 $("#titleMaster").html("Form AR Customer");
+             } else if (page == 'iPxInputARTransaction.aspx') {
+                 $("#titleMaster").html("Form AR Transaction");
+             } else if (page == 'iPxInputARInvoice.aspx') {
+                 $("#titleMaster").html("Form AR Invoice");
+             } else if (page == 'iPxInputARReceipt.aspx') {
+                 $("#titleMaster").html("Form AR Receipt");
+             } else if (page == 'iPxARCreditCard.aspx') {
+                 $("#titleMaster").html("Credit Card Clearance");
+             } else if (page == 'licenseextentionAdmin.aspx') {
+                 $("#titleMaster").html("Accounting License");
+             } else if (page == 'iPxSalesSummary.aspx') {
+                 $("#titleMaster").html("Sales Summary");
+             } else if (page == 'iPxSalesStatistic.aspx') {
+                 $("#titleMaster").html("Statistic Summary");
+             } else if (page == 'iPxSalesBudget.aspx') {
+                 $("#titleMaster").html("Sales Budget");
+             } else if (page == 'iPxPostingCoa.aspx') {
+                 $("#titleMaster").html("POSTING CODE COA MAPPING");
+             } else if (page == 'setupbusiness.aspx') {
+                 $("#titleMaster").html("Business Profile");
+             } else if (page == 'iPxCoa.aspx'||page == 'iPxGLInputTransaction.aspx'||page == 'iPxGLTransaction.aspx'||page == 'iPxGLSummary.aspx' || page=='iPxGLCashBank.aspx' || page=='iPxGLClosing.aspx' || page=='iPxGLPLAccount.aspx') {
+                 $("#titleMaster").html("General Ledger");
+             } else if (page=='iPxGLCashBank.aspx') {
+                 $("#titleMaster").html("General Ledger Cash & Bank Control");
+             } else if (page=='iPxGLClearance.aspx') {
+                 $("#titleMaster").html("General Ledger Clearance Control");
+             } else if (page=='iPxInvoiceFormat.aspx') {
+                 $("#titleMaster").html("Invoice Format");
+             } else if (page=='iPxAnalysGrafik.aspx') {
+                 $("#titleMaster").html("Business Analysis");
+                 $('body').css("background-color", "#ecf0f1");
+             } else if (page=='iPxARAnalys.aspx') {
+                 $("#titleMaster").html("AR Analysis");
+                 $('body').css("background-color", "#ecf0f1");
+             } else {
+                 $("#titleMaster").html("Alcor ACCOUNTING");
+             }
+             
+         });
+    </script>
+    <script type="text/javascript">
+        function checkAll(gvInvoice, colIndex) {
+            var GridView = gvInvoice.parentNode.parentNode.parentNode;
+            for (var i = 1; i < GridView.rows.length; i++) {
+                var chb = GridView.rows[i].cells[colIndex].getElementsByTagName("input")[0];
+                if (chb.disabled!=false){
+                
+                }else{
+                    chb.checked = gvInvoice.checked;
+                }
+            }
+        }
+
+        function checkItem_All(objRef, colIndex) {
+            var GridView = objRef.parentNode.parentNode.parentNode;
+            var selectAll = GridView.rows[0].cells[colIndex].getElementsByTagName("input")[0];
+            if (!objRef.checked) {
+                selectAll.checked = false;
+            }
+            else {
+                var checked = true;
+                for (var i = 1; i < GridView.rows.length; i++) {
+                    var chb = GridView.rows[i].cells[colIndex].getElementsByTagName("input")[0];
+                    if (!chb.checked) {
+                        checked = false;
+                        break;
+                    }
+                }
+                selectAll.checked = checked;
+            }
+        }
+    </script> 
+    <script type="text/javascript">
+        function datetimepicker() {
+            $(".datepicker").datepicker({ format: 'dd/mm/yyyy', autoclose: true, todayBtn: 'linked' })
+        }
+        function datetimepicker1() {
+            $(".datepicker1").datepicker({ format: 'dd MM yyyy', autoclose: true, todayBtn: 'linked' })
+        }
+        function tanggal() {
+            $(".tanggal").datepicker({ format: 'dd/mm/yyyy', autoclose: true, todayBtn: 'linked' })
+        }
+    </script>
+    <script type="text/javascript">
+        function openModal() {
+            $('#myModal').modal('show');
+        }
+    </script>
+    <script type="text/javascript">
+        function SetTarget() {
+            document.forms[0].target = "_blank";
+        }
+        function hideModalDocket() {
+            $('#formDocket').modal('hide');
+            $('body').removeClass('modal-open');
+            $('body').css("padding-right", "");
+            $('.modal-backdrop').hide();
+        }
+        function showModalDocket() {
+            $('#formDocket').modal({ backdrop: 'static',
+                keyboard: false
+            }, 'show');
+        }
+        function hideModalAddTrans() {
+            $('#formAddTrans').modal('hide');
+            $('body').removeClass('modal-open');
+            $('body').css("padding-right", "");
+            $('.modal-backdrop').hide();
+        }
+        function showModalAddTrans() {
+            $('#formAddTrans').modal({ backdrop: 'static',
+                keyboard: false
+            }, 'show');
+        }
+        function hideModalDeleteTrans() {
+            $('#formDeleteTrans').modal('hide');
+            $('body').removeClass('modal-open');
+            $('body').css("padding-right", "");
+            $('.modal-backdrop').hide();
+        }
+        function showModalDeleteTrans() {
+            $('#formDeleteTrans').modal({ backdrop: 'static',
+                keyboard: false
+            }, 'show');
+        }
+        function hideModalAdd() {
+            $('#formInput').modal('hide');
+              $('body').removeClass('modal-open');
+            $('body').css("padding-right", "");
+            $('.modal-backdrop').hide();
+        }
+        function showModalAdd() {
+            $('#formInput').modal({ backdrop: 'static',
+                keyboard: false
+            }, 'show');
+        }
+        function hideModalQuery() {
+            $('#formQuery').modal('hide');
+            $('body').removeClass('modal-open');
+            $('body').css("padding-right", "");
+            $('.modal-backdrop').hide();
+        }
+        function showModalQuery() {
+            $('#formQuery').modal({ backdrop: 'static',
+                keyboard: false
+            }, 'show');
+        }
+        function hideModalCOA() {
+            $('#ListCOA').modal('hide');
+            $('body').removeClass('modal-open');
+            $('body').css("padding-right", "");
+            $('.modal-backdrop').hide();
+        }
+        function showModalCOA() {
+            $('#ListCOA').modal({ backdrop: 'static',
+                keyboard: false
+            }, 'show');
+        }
+        function hideModalCreatType() {
+            $('#formType').modal('hide');
+            $('body').removeClass('modal-open');
+            $('body').css("padding-right", "");
+            $('.modal-backdrop').hide();
+        }
+        function showModalCreatType() {
+            $('#formType').modal({ backdrop: 'static',
+                keyboard: false
+            }, 'show');
+        }
+        
+        function hideModalEmailverived() {
+            $('#formVerivedEmail').modal('hide');
+            $('body').removeClass('modal-open');
+            $('body').css("padding-right", "");
+            $('.modal-backdrop').hide();
+        }
+        function showModalEmailverived() {
+            $('#formVerivedEmail').modal({ backdrop: 'static',
+                keyboard: false
+            }, 'show');
+        }
+    </script>
+    <script type="text/javascript">
+        function ShowAlert(command) {
+            $('#success-alert').modal('show');
+            $('.modal-body').append('<i class="glyphicon glyphicon-ok-sign"></i> ' + command);
+            $('.modal-backdrop.in').hide();
+            setTimeout(function() {
+                $('#success-alert').modal('hide');
+            }, 1500);
+        }
+    </script>
+    <script type="text/javascript">
+        function ShowAlertDanger(command) {
+            $('#danger-alert').modal('show');
+            $('.modal-body').append('<i class="glyphicon glyphicon-exclamation-sign"></i> ' + command);
+            $('.modal-backdrop.in').hide();
+            setTimeout(function() {
+                $('#danger-alert').modal('hide');
+            }, 2000); 
+        }
+    </script>
+    <script type="text/javascript">
+        function hideDisplayBlock() {
+            $('body').removeClass('modal-open');
+            $('body').css("padding-right", "");
+            $('.modal-backdrop').hide();
+        }
+    </script>
+    <script type="text/javascript">
+        function closeAlret() {
+            $('#showAlret').hide();
+        }
+    </script>
+    <script type="text/javascript">
+        function confirmationPost() {
+            if (confirm('Do you want to post journal ?')) {
+            return true;
+            }else{
+            return false;
+            }
+        }
+        function confirmationImport() {
+            if (confirm('Do you want to Import AR Transaction ?')) {
+            return true;
+            }else{
+            return false;
+            }
+        }
+        function ConfirmUpdateALLCOA()
+        {
+            if (confirm('Do you want to update All ?')) {
+            return true;
+            }else{
+            return false;
+            }
+        }
+        
+    </script>
+    <style type="text/css">
+        .pagination-ys {
+            /*display: inline-block;*/
+            padding-left: 0;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .pagination-ys table > tbody > tr > td {
+            display: inline;
+        }
+
+        .pagination-ys table > tbody > tr > td > a,
+        .pagination-ys table > tbody > tr > td > span {
+            position: relative;
+            float: left;
+            padding: 8px 12px;
+            line-height: 1.42857143;
+            text-decoration: none;
+            color: #31708f;
+            font-weight:bold;
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            margin-left: -1px;
+        }
+
+        .pagination-ys table > tbody > tr > td > span {
+            position: relative;
+            float: left;
+            padding: 8px 12px;
+            line-height: 1.42857143;
+            text-decoration: none;    
+            margin-left: -1px;
+            z-index: 2;
+            color: #31708f;
+            font-weight:bold;
+            background-color: #eeeeee;
+            border-color: #dddddd;
+            cursor: default;
+        }
+
+        .pagination-ys table > tbody > tr > td:first-child > a,
+        .pagination-ys table > tbody > tr > td:first-child > span {
+            margin-left: 0;
+            border-bottom-left-radius: 4px;
+            border-top-left-radius: 4px;
+        }
+
+        .pagination-ys table > tbody > tr > td:last-child > a,
+        .pagination-ys table > tbody > tr > td:last-child > span {
+            border-bottom-right-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+
+        .pagination-ys table > tbody > tr > td > a:hover,
+        .pagination-ys table > tbody > tr > td > span:hover,
+        .pagination-ys table > tbody > tr > td > a:focus,
+        .pagination-ys table > tbody > tr > td > span:focus {
+            color: #31708f;
+            font-weight:bold;
+            background-color: #eeeeee;
+            border-color: #dddddd;
+        }
+    </style>
+    <style>
+        .small-box {
+            border-radius: 2px;
+            position: relative;
+            display: block;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+            border: 1px solid #005662;
+        }
+        .inner {
+            padding: 10px;
+        }
+        .small-box h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+            white-space: nowrap;
+            padding: 0;
+        }
+        .small-box p {
+            font-size: 15px;
+        }
+        .small-box .icon {
+            -webkit-transition: all .3s linear;
+            -o-transition: all .3s linear;
+            transition: all .3s linear;
+            position: absolute;
+            top: 0px;
+            right: 40px;
+            z-index: 0;
+            font-size: 40px;
+            color: rgba(0,0,0,0.15);
+        }
+        .small-box-header {
+            position: relative;
+            text-align: center;
+            padding: 3px 0;
+            color: #fff;
+            display: block;
+            z-index: 10;
+            background: #00838f;
+            text-decoration: none;
+        }
+    </style>
+   <style type="text/css">
+        body
+        {
+            margin: 0;
+            padding: 0;
+            font-family: Segoe UI Semibold;
+        }
+        .modalprogress
+        {
+            position: fixed;
+            z-index: 999;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            background-color: White;
+            filter: alpha(opacity=60);
+            opacity: 0.6;
+            -moz-opacity: 0.8;
+        }
+        .centerprogress
+        {
+            z-index: 1000;
+            margin: 300px auto;
+            padding: 10px;
+            width: 145px;
+            background-color: White;
+            border-radius: 10px;
+            filter: alpha(opacity=100);
+            opacity: 1;
+            -moz-opacity: 1;
+        }
+        
+        .alert {
+            display: block;
+        }
+        
+        #header
+        {
+            top:0%;
+            height: 11%;
+            width :78%;
+            left :20%;
+            position:fixed;
+            z-index:999;
+        }
+        
+        #content
+        {
+            margin-top:75px;
+            overflow:auto;
+            width :100%;
+            padding-left :2%;
+            z-index :999;
+            padding-bottom:50px;
+        }
+        
+        #footer
+        {
+            top:92%;
+            height: 10%;
+            width :78%;
+            left :20%;
+            position:fixed ;
+            z-index:999;
+            overflow:auto;
+            background-color:#f7f7f7;
+            padding-top:9px;
+        }
+    
+        .navbar-default .navbar-nav>li>a {
+        color: #337ab7;
+        }
+        
+        .navbar-default .navbar-nav>li>a:hover {
+        color: #337ab7;
+        background-color: #eee;
+        }
+        
+        .dropdown-menu>li>a {
+        color: #337ab7;
+        }
+        
+        .dropdown-menu>li>a:hover {
+        color: #337ab7;
+        }
+        
+        .modal-header {
+          background-color: #f8f8f8;
+        }
+        
+        .no-border {
+            border: 0;
+            box-shadow: none;
+        }
+        
+        .stepwizard-step p {
+            margin-top: 10px;    
+        }
+
+        .stepwizard-row {
+            display: table-row;
+        }
+
+        .stepwizard {
+            display: table;     
+            width: 100%;
+            position: relative;
+        }
+
+        .stepwizard-step button[disabled] {
+            opacity: 1 !important;
+            filter: alpha(opacity=100) !important;
+        }
+
+        .stepwizard-row:before {
+            top: 14px;
+            bottom: 0;
+            position: absolute;
+            content: " ";
+            width: 100%;
+            height: 1px;
+            background-color: #2e6da4;
+            z-order: 0;
+            
+        }
+        .stepwizard-step {    
+            display: table-cell;
+            text-align: center;
+            position: relative;
+        }
+        .btn-circle {
+          width: 30px;
+          height: 30px;
+          text-align: center;
+          padding: 6px 0;
+          font-size: 12px;
+          font-weight:bold;
+          line-height: 1.428571429;
+          border-radius: 15px;
+        }
+        .btn {
+        	font-weight: bold;
+        }
+        .btn-default {
+            color: #333;
+            background-color: #fff;
+            border-color: #31708f;
+        }
+        .btn-default:hover {
+            border-color: #31708f;
+        }
+        .bootstrap-datetimepicker-widget {
+            width:50px;
+            z-index: 100000;
+        }
+    </style>
+    
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+<form id="form1" runat="server">
+    <div id="header" >
+      <asp:ContentPlaceHolder ID="ContentPlaceHolder4" runat="server">
+       <div class="pageheader" style="box-shadow: 0 2px 1px -2px gray; background-color:#fff;">    
+        <div id="titleMaster" style="font-size:17px;font-weight:bold;">
+            <asp:Label ID="lblMasterTitle" runat="server" Text="Alcor ACCOUNTING" Font-Bold="true" Font-Size="Medium"></asp:Label>     
+        </div>
+            <div class="breadcrumb-wrapper hidden-xs"> <span class="label"></span>
+              <ol class="breadcrumb">
+                  <li>
+                      <asp:Label ID="lblValid" runat="server" Text="Fullname"></asp:Label>
+                  </li>
+                  <li>
+                      <a href="setupbusiness.aspx"><asp:Label ID="lblUser" runat="server" Text="Fullname"></asp:Label></a>
+                  </li>
+                  <li>
+                      <asp:LinkButton ID="btnLogoutheader" runat="server">Logout</asp:LinkButton>         
+                  </li>
+                  <li>       
+      	            <a href="releaseversion.aspx">Ver <asp:Label ID="lbVersion" runat="server" Text=""></asp:Label></a>           
+                  </li>
+                </ol>
+            </div>
+        </div>
+          </asp:ContentPlaceHolder>
+      </div>
+      
+<%-- Bar menu  --%>
+<nav class="navbar navbar-default sidebar navbar-fixed-top" role="navigation" data-spy="affix">
+<div class="container-fluid">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    
+	<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+	    
+		<ul class="nav navbar-nav">
+		    <li>
+		        <img height="50" style="padding-bottom:5px; padding-top:5px" src="../assets/img/Alcor-cloud.png"  />
+		    </li>
+		    <li>
+				<a style="color:#083765" href="home.aspx" class="text-primary">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home "></span></a>
+			</li>
+            <li><a style="color:#083765" href="#" id="A1" data-toggle="collapse" data-target="#submenu2" aria-expanded="false" style="font-weight:bold;">Sales <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity fa fa-bar-chart "></span></a>
+              <ul class="nav collapse" id="submenu2" role="menu" aria-labelledby="btn-1">
+                <li style="padding-left:10px; padding-right:5px;"><a style="color:#083765;" href="iPxSalesSummary.aspx">Sales Summary</a></li>
+				<%--<li style="padding-left:10px; padding-right:5px;"><a style="color:#083765;" href="iPxSalesStatistic.aspx">Statistic Summary </a></li>--%>
+			    <li class="dropdown" style="padding-left:10px; padding-right:5px;">
+				    <a style="color:#083765; " href="" class="dropdown-toggle" data-toggle="dropdown">Sales Configuration <span class="caret"></span></a>
+			        <ul class="dropdown-menu forAnimate" role="menu" style="background-color:#f8f8f8;">
+				        <li style="padding-left:10px"><a style="color:#083765;" href="iPxSalesBudget.aspx"> Sales Budget </a></li>
+                        <li style="padding-left:10px"><a style="color:#083765;" href="iPxSalesCoaMapping.aspx"> Coa Mapping</a></li>
+				    </ul>
+			    </li>
+              </ul>
+            </li>
+			<li><a style="color:#083765" href="#" id="btn-1" data-toggle="collapse" data-target="#submenu1" aria-expanded="false" style="font-weight:bold;">Account Receivable <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity fa fa-file "></span></a>
+              <ul class="nav collapse" id="submenu1" role="menu" aria-labelledby="btn-1">
+                <li style="padding-left:10px; padding-right:5px;"><a style="color:#083765;" href="iPxARTransaction.aspx">AR Transaction </a></li>
+				<li style="padding-left:10px; padding-right:5px;"><a style="color:#083765;" href="iPxARInvoice.aspx">AR Invoice </a></li>
+				<li style="padding-left:10px; padding-right:5px;"><a style="color:#083765;" href="iPxARReceipt.aspx">AR Receipt </a></li>
+				<li style="padding-left:10px; padding-right:5px;"><a style="color:#083765;" href="iPxARCreditCard.aspx">Credit Card Clearance </a></li>
+                <li class="dropdown" style="padding-left:10px; padding-right:5px;">
+				    <a style="color:#083765; " href="" class="dropdown-toggle" data-toggle="dropdown">AR Summary <span class="caret"></span></a>
+			        <ul class="dropdown-menu forAnimate" role="menu" style="background-color:#f8f8f8;">
+				        <li style="padding-left:10px"><a style="color:#083765;" href="iPxARSummary.aspx"> AR Summary</a></li>
+                        <li style="padding-left:10px"><a style="color:#083765;" href="iPxARAging.aspx"> AR Aging</a></li>
+				    </ul>
+			    </li>
+                <li style="padding-left:10px; padding-right:5px;"><a style="color:#083765;" href="iPxARAnalys.aspx">AR Analysis </a></li>
+                <li class="dropdown" style="padding-left:10px; padding-right:5px;">
+				    <a style="color:#083765; " href="" class="dropdown-toggle" data-toggle="dropdown">AR Configuration <span class="caret"></span></a>
+			        <ul class="dropdown-menu forAnimate" role="menu" style="background-color:#f8f8f8;">
+				        <li style="padding-left:10px"><a style="color:#083765;" href="iPxCustomerAR.aspx"> Customer</a></li>
+                        <%--<li style="padding-left:10px"><a style="color:#083765;" href="iPxCreditCard.aspx"> Credit Card</a></li>--%>
+                        <li style="padding-left:10px"><a style="color:#083765;" href="iPxCustomerGrp.aspx"> Group</a></li>
+                        <li style="padding-left:10px"><a style="color:#083765;" href="iPxCoyGrp.aspx"> Coy group</a></li>
+                        <li style="padding-left:10px"><a style="color:#083765;" href="iPxTransactionTypeAR.aspx"> Transaction Type</a></li>
+                        <li style="padding-left:10px"><a style="color:#083765;" href="iPxPaimentType.aspx"> Payment Type</a></li>
+				        <li style="padding-left:10px"><a style="color:#083765;" href="iPxInvoiceFormat.aspx"> Invoice Format</a></li>
+				    </ul>
+			    </li>
+              </ul>
+            </li>
+            <li><a style="color:#083765" href="#" id="btn-1" data-toggle="collapse" data-target="#submenu5" aria-expanded="false" style="font-weight:bold;">Account Payable <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity fa fa-file "></span></a>
+              <ul class="nav collapse" id="submenu5" role="menu" aria-labelledby="btn-1">
+                <li style="padding-left:10px; padding-right:5px;"><a style="color:#083765;" href="iPxAPTransaction.aspx">AP Transaction </a></li>
+				<li style="padding-left:10px; padding-right:5px;"><a style="color:#083765;" href="iPxAPVoucher.aspx">Payment Voucher </a></li>
+				<li style="padding-left:10px; padding-right:5px;"><a style="color:#083765;" href="iPxAPPayment.aspx">AP Payment </a></li>
+				<li class="dropdown" style="padding-left:10px; padding-right:5px;">
+				    <a style="color:#083765; " href="" class="dropdown-toggle" data-toggle="dropdown">AP Summary <span class="caret"></span></a>
+			        <ul class="dropdown-menu forAnimate" role="menu" style="background-color:#f8f8f8;">
+				        <li style="padding-left:10px"><a style="color:#083765;" href="iPxAPSummary.aspx"> AP Summary</a></li>
+                        <li style="padding-left:10px"><a style="color:#083765;" href="iPxAPAging.aspx"> AP Aging</a></li>
+				    </ul>
+			    </li>
+                <li style="padding-left:10px; padding-right:5px;"><a style="color:#083765;" href="iPxAPAnalys.aspx">AP Analysis </a></li>
+                <li class="dropdown" style="padding-left:10px; padding-right:5px;">
+				    <a style="color:#083765; " href="" class="dropdown-toggle" data-toggle="dropdown">AP Configuration <span class="caret"></span></a>
+			        <ul class="dropdown-menu forAnimate" role="menu" style="background-color:#f8f8f8;">
+				        <li style="padding-left:10px"><a style="color:#083765;" href="iPxAPVendor.aspx"> Vendor</a></li>
+                        <li style="padding-left:10px"><a style="color:#083765;" href="iPxAPVendorGrp.aspx"> Vendor Group</a></li>
+                        <li style="padding-left:10px"><a style="color:#083765;" href="iPxAPTransactionType.aspx"> Transaction Type</a></li>
+                        <li style="padding-left:10px"><a style="color:#083765;" href="iPxAPPaimentType.aspx"> Payment Type</a></li>
+				        <li style="padding-left:10px"><a style="color:#083765;" href="#"> PV Format</a></li>
+				    </ul>
+			    </li>
+              </ul>
+            </li>
+            <li><a style="color:#083765" href="#" id="A3" data-toggle="collapse" data-target="#submenu4" aria-expanded="false" style="font-weight:bold;">General Ledger <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity fa fa-book "></span></a>
+              <ul class="nav collapse" id="submenu4" role="menu" aria-labelledby="btn-1">
+                <li style="padding-left:10px; padding-right:5px;"><a style="color:#083765;" href="iPxGLTransaction.aspx">GL Journal </a></li>
+                <li class="dropdown" style="padding-left:10px; padding-right:5px;">
+				    <a style="color:#083765; " href="" class="dropdown-toggle" data-toggle="dropdown">GL Summary <span class="caret"></span></a>
+			        <ul class="dropdown-menu forAnimate" role="menu" style="background-color:#f8f8f8;">
+				        <li style="padding-left:10px"><a style="color:#083765;" href="iPxGLTrialBalance.aspx">Trial Balance</a></li>
+			            <li style="padding-left:10px"><a style="color:#083765" href="iPxGLSummary.aspx">Profit and Lost</a></li>
+					    <li style="padding-left:10px"><a style="color:#083765" href="iPxGLSummaryBalanceSheet.aspx">Balance Sheet</a></li>
+				    </ul>
+			    </li>
+                <li style="padding-left:10px; padding-right:5px;"><a style="color:#083765;" href="iPxGLCashBank.aspx">Cash & Bank Control </a></li>
+                <li style="padding-left:10px; padding-right:5px;"><a style="color:#083765;" href="iPxGLClearance.aspx">Clearance Control </a></li>
+                <li style="padding-left:10px; padding-right:5px;"><a style="color:#083765;" href="iPxAnalysGrafik.aspx">Business Analysis </a></li>
+                <li style="padding-left:10px; padding-right:5px;"><a style="color:#083765;" href="iPxGLClosing.aspx">GL Closing </a></li>
+                <li class="dropdown" style="padding-left:10px; padding-right:5px;">
+				    <a style="color:#083765; " href="" class="dropdown-toggle" data-toggle="dropdown">GL Configuration <span class="caret"></span></a>
+			        <ul class="dropdown-menu forAnimate" role="menu" style="background-color:#f8f8f8;">
+			            <li style="padding-left:10px"><a style="color:#083765" href="iPxGLBudget.aspx">GL Budget</a></li>
+					    <li style="padding-left:10px"><a style="color:#083765" href="iPxCoa.aspx">Chart of Account</a></li>
+			            <li style="padding-left:10px"><a style="color:#083765" href="iPxGLRecaring.aspx">Recuring Journal</a></li>
+				        <li style="padding-left:10px"><a style="color:#083765;" href="iPxGLDevision.aspx"> Division</a></li>
+				        <li style="padding-left:10px"><a style="color:#083765;" href="iPxGLPLAccount.aspx"> PL Reversal Account</a></li>
+				    </ul>
+			    </li>
+			  </ul>
+            </li>
+            <li class="dropdown">
+				<a style="color:#083765" href="" class="dropdown-toggle" data-toggle="dropdown">Option<span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity fa fa-cogs "></span></a>
+				<ul class="dropdown-menu forAnimate" role="menu">
+					 <li><a style="color:#083765" href="licenseextentionAdmin.aspx">Licence</a></li>
+					 <li><a style="color:#083765" href="iPxFOLink.aspx">PMS Link</a></li>
+					 <li><a style="color:#083765" href="defaultparameter.aspx">Default Parameter</a></li>
+					 <li><a style="color:#083765" href="SetupSMTP.aspx">SMTP</a></li>
+                     <li><a style="color:#083765" href="iPxAccesUser.aspx">User Acces</a></li>
+				</ul>
+			</li>
+            <li>
+				<a style="color:#083765" href="iPxReportList.aspx"> Report<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-file "></span></a>
+			</li>
+		    <li>
+				<a style="color:#083765" href="../HTMLHelp/WebHelp/index.htm"> Help<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-question-sign "></span></a>
+			</li> 
+
+            <li>
+				<a style="color:#083765" runat="server" id="btnmenulogout">Logout<span style="font-size:16px;" class="pull-right hidden-xs showopacity fa fa-sign-out "></span></a>
+			</li>
+		</ul>
+	</div>
+</div>
+</nav>
+
+<%--tab panel--%>
+ <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+     <ContentTemplate>
+         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+            <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+        <ProgressTemplate>
+            <div class="modalprogress" style="z-index:2000;">
+                <div class="centerprogress">
+                    <img alt="" src="../assets/images/progress/loader.gif" />
+                </div>
+            </div>
+        </ProgressTemplate>
+    </asp:UpdateProgress>
+        <div id="page-wrapper">
+      
+                <div class="row">
+                    <div class="col-lg-12">
+                      <div id="content" class="container" >
+                        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                   </div>
+                </div>
+                
+                <%--<div id="footer" class="container" >--%>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                    </asp:ContentPlaceHolder>
+                <%--</div>--%>
+                
+                <div class="container">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server"></asp:ContentPlaceHolder>
+                </div>
+                
+        </div>
+
+     </ContentTemplate>
+</asp:UpdatePanel>
+
+</form>    
+</body>
+</html>
